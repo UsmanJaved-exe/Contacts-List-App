@@ -9,11 +9,15 @@
     android:layout_margin="20dp">
 
     <ImageButton
+        android:id="@+id/Photo"
         android:contentDescription="Img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:src="@drawable/ic_launcher_foreground"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         />
 
     <EditText

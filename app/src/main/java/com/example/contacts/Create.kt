@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,6 +16,7 @@ class Create : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_create)
 
+        val photo = findViewById<ImageButton>(R.id.Photo)
         val bname = findViewById<EditText>(R.id.Name)
         val bno = findViewById<EditText>(R.id.contactnumber)
         val save = findViewById<Button>(R.id.addContact)
@@ -24,9 +26,9 @@ class Create : AppCompatActivity() {
             val nameinput = bname.text.toString()
             val numberinput = bno.text.toString()
 
-            val intent = Intent(this , MainActivity::class.java).apply {
-                putExtra("NAME",nameinput)
-                putExtra("NUMBER",numberinput)
+            val intent = Intent(this, MainActivity::class.java).apply {
+                putExtra("NAME", nameinput)
+                putExtra("NUMBER", numberinput)
             }
             startActivity(intent)
             finish()

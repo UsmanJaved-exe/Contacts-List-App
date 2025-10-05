@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.withContext
 import kotlin.contracts.contract
 
@@ -57,9 +58,25 @@ class Adpt(
 
             dlt?.setOnClickListener {
                 data.removeAt(position)
+                val deletedPosition = position
                 notifyItemRemoved(position)
-                notifyItemRangeChanged(holder.adapterPosition, data.size)
+                val undoSnackBar = Snackbar.make(holder.itemView,"Contact deleted",Snackbar.LENGTH_LONG)
+                class MyUndoListener : View.OnClickListener {
+
+                    override fun onClick(v: View) {
+                        data.add(deletedPosition,info)
+                        notifyItemInserted(position)
+                    }
+                }
+                undoSnackBar.setAction("Undo",MyUndoListener())
+                undoSnackBar.show()
+
                 box.dismiss()
+
+
+
+
+
             }
 
             edt?.setOnClickListener {
